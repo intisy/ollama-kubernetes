@@ -1,8 +1,9 @@
 #!/bin/bash
-#test
+
+sha=$1
 using_kubernetes=true
 
-curl -fsSL https://raw.githubusercontent.com/WildePizza/ollama-kubernetes/HEAD/run.sh | bash -s deinstall
+curl -fsSL https://raw.githubusercontent.com/WildePizza/ollama-kubernetes/HEAD/.commits/$sha/scripts/deinstall.sh | bash -s
 sudo mkdir ~/ollama
 cd ~/ollama
 if [ "$using_kubernetes" = true ]; then
