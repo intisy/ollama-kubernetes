@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#test
 using_kubernetes=true
 
 curl -fsSL https://raw.githubusercontent.com/WildePizza/ollama-kubernetes/HEAD/run.sh | bash -s deinstall
