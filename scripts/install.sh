@@ -63,9 +63,16 @@ spec:
     spec:
       containers:
       - name: ollama-webui
-        image: ghcr.io/open-webui/open-webui:main
+        image: ghcr.io/open-webui/open-webui:git-740b6f5-cuda
+        imagePullPolicy: Always
         ports:
         - containerPort: 722
+          name: http
+          protocol: TCP
+        publish:
+        - hostPort: 722
+          protocol: TCP
+          port: 8080
         volumeMounts:
         - name: ollama-pv
           mountPath: /app/backend/data
