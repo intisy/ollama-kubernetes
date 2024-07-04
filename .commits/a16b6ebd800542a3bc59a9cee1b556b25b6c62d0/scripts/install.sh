@@ -73,6 +73,14 @@ spec:
       labels:
         app: ollama-webui
     spec:
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 20
+        failureThreshold: 3
+      restartPolicy: Always
       containers:
       - name: ollama-webui
         image: ghcr.io/open-webui/open-webui:git-740b6f5-cuda
