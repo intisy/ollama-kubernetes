@@ -2,7 +2,6 @@
 
 using_kubernetes=true
 
-
 curl -fsSL https://raw.githubusercontent.com/WildePizza/ollama-kubernetes/HEAD/run.sh | bash -s deinstall
 sudo mkdir ~/ollama
 cd ~/ollama
@@ -63,9 +62,16 @@ spec:
     spec:
       containers:
       - name: ollama-webui
-        image: ghcr.io/open-webui/open-webui:main
+        image: ghcr.io/open-webui/open-webui:git-740b6f5-cuda
+        imagePullPolicy: Always
         ports:
         - containerPort: 722
+          name: http
+          protocol: TCP
+        publish:
+        - hostPort: 722
+          protocol: TCP
+          port: 8080
         volumeMounts:
         - name: ollama-pv
           mountPath: /app/backend/data
