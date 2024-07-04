@@ -11,7 +11,7 @@ if [ "$using_kubernetes" = true ]; then
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ollamaa-pv
+  name: ollama-pv
 spec:
   capacity:
     storage: 1500Gi
@@ -67,12 +67,12 @@ spec:
         ports:
         - containerPort: 722
         volumeMounts:
-        - name: ollama-webui-pv
+        - name: ollama-pv
           mountPath: /app/backend/data
       volumes:
-      - name: ollama-webui-pv
+      - name: ollama-pv
         persistentVolumeClaim:
-          claimName: ollama-webui-pv-claim
+          claimName: ollama-pv-claim
 EOF
   kubectl apply -f - <<EOF
 apiVersion: v1
