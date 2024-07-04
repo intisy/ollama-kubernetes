@@ -69,10 +69,6 @@ spec:
         - containerPort: 722
           name: http
           protocol: TCP
-        publish:
-        - hostPort: 722
-          protocol: TCP
-          port: 8080
         volumeMounts:
         - name: ollama-pv
           mountPath: /app/backend/data
