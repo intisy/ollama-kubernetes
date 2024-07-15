@@ -44,7 +44,7 @@ spec:
         - key: node-role.kubernetes.io/control-plane
           operator: In
           values:
-          - true
+          - "true"
 OEF
   kubectl apply -f - <<EOF
 apiVersion: v1
