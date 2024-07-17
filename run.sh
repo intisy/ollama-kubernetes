@@ -1,8 +1,7 @@
 #!/bin/bash
 
 action=$1
-arg1=$2
-arg2=$2
+arg=$2
 
 execute() {
   substring="#!/bin/bash"
@@ -11,7 +10,7 @@ execute() {
   echo "Executing: $url"
   output=$(curl -fsSL $url 2>&1)
   if [[ $output =~ $substring ]]; then
-    curl -fsSL $url | bash -s $sha $arg1 $arg2
+    curl -fsSL $url | bash -s $arg
   else
     sleep 1
     execute
