@@ -1,8 +1,11 @@
 #!/bin/bash
 
-using_kubernetes=$1
+args=$@
+pat=$1
+sha=$2
+using_kubernetes=$3
 
-curl -fsSL https://raw.githubusercontent.com/WildePizza/ollama-kubernetes/HEAD/run.sh | bash -s deinstall $using_kubernetes
+sudo bash kubernetes-center/run.sh repo=ollama-kubernetes raw_args="$args" action=deinstall pat=$pat sha=$sha"
 sudo mkdir ~/ollama
 cd ~/ollama
 if [ "$using_kubernetes" = true ]; then
